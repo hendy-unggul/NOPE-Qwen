@@ -26,6 +26,7 @@
     <!-- Artefak Hero -->
     <div class="hero">
       <img id="hero-img" src="" alt="artefak">
+      <div class="artefak-notation" id="hero-notation-display"></div>
       <div class="hero-input">
         <input id="hero-notation" type="text" placeholder="notasi (maks 4 kata)" maxlength="50">
         <button onclick="saveHero()">Simpan</button>
@@ -34,7 +35,7 @@
 
     <!-- Rant Box -->
     <div class="rant-box">
-      <textarea id="rant" placeholder="Jejakkan..."></textarea>
+      <textarea id="rant" placeholder="...jejakmu dalam 300 huruf" maxlength="300"></textarea>
       <button class="rant-cta" onclick="postRant()">Jejakkan</button>
       <div class="confirmation" id="confirmation"></div>
     </div>
@@ -42,12 +43,11 @@
     <!-- Diary -->
     <div class="diary" id="diary"></div>
 
-    <!-- Tray -->
+    <!-- Tray Artefak (2 baris x 3 kolom) -->
     <div class="tray" id="tray"></div>
 
     <div class="tagline">
-      Untuk setiap jiwa<br>
-      yang memilih kejujuran<br>
+      Untuk yang memilih kejujuran<br>
       tanpa meminta pengakuan.<br>
       <strong>— Glitch Generation</strong>
     </div>
@@ -71,6 +71,7 @@
     function renderHero() {
       document.getElementById('hero-img').src = artefacts[0].img;
       document.getElementById('hero-notation').value = artefacts[0].notation;
+      document.getElementById('hero-notation-display').textContent = artefacts[0].notation;
     }
 
     function renderDiary() {
@@ -92,6 +93,7 @@
         const div = document.createElement('div');
         div.className = 'tray-slot';
         div.style.backgroundImage = `url(${a.img})`;
+        div.innerHTML = `<div class="artefak-notation">${a.notation}</div>`;
         tray.appendChild(div);
       });
     }
@@ -118,6 +120,10 @@
     function postRant() {
       const v = document.getElementById('rant').value.trim();
       if (!v) return;
+      if (v.length > 300) {
+        alert('Maksimal 300 huruf.');
+        return;
+      }
       rants.unshift({
         content: v,
         timestamp: Date.now()

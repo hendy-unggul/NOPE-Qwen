@@ -27,9 +27,10 @@
     <div class="hero">
       <img id="hero-img" src="" alt="artefak">
       <div class="artefak-notation" id="hero-notation-display"></div>
-      <div class="hero-input">
+      <!-- Input notasi & CTA hanya muncul saat perlu -->
+      <div class="hero-input" id="hero-input-container">
         <input id="hero-notation" type="text" placeholder="notasi (maks 4 kata)" maxlength="50">
-        <button onclick="saveHero()">Simpan</button>
+        <button onclick="uploadArtefak()">Unggah</button>
       </div>
     </div>
 
@@ -43,7 +44,7 @@
     <!-- Diary -->
     <div class="diary" id="diary"></div>
 
-    <!-- Tray Artefak (2 baris x 3 kolom) -->
+    <!-- Tray Artefak -->
     <div class="tray" id="tray"></div>
 
     <div class="tagline">
@@ -53,25 +54,38 @@
     </div>
   </div>
 
+  <!-- Hidden file input for gallery -->
+  <input type="file" id="file-input" accept="image/*" style="display:none;" onchange="handleFileSelect(event)">
+
   <script src="rituals.js"></script>
   <script>
     // Load username
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
 
-    // Init artefacts & rants from localStorage
+    // Init artefacts & rants
     let artefacts = JSON.parse(localStorage.getItem('nope_artefacts') || '[]');
     let rants = JSON.parse(localStorage.getItem('nope_rants') || '[]');
 
-    // Default artefak if empty
+    // Default artefak
     if (artefacts.length === 0) {
       artefacts = [{ img: 'https://picsum.photos/384/480?random=1', notation: 'sunset' }];
       localStorage.setItem('nope_artefacts', JSON.stringify(artefacts));
     }
 
+    // Last upload time
+    const lastUpload = parseInt(localStorage.getItem('nope_last_upload') || '0');
+    const now = Date.now();
+    const canUpload = (now - lastUpload) >= 30 * 24 * 60 * 60 * 1000; // 30 days
+
     function renderHero() {
       document.getElementById('hero-img').src = artefacts[0].img;
-      document.getElementById('hero-notation').value = artefacts[0].notation;
       document.getElementById('hero-notation-display').textContent = artefacts[0].notation;
+      // Sembunyikan input jika sudah ada notasi
+      if (artefacts[0].notation && artefacts[0].notation.trim()) {
+        document.getElementById('hero-input-container').style.display = 'none';
+      } else {
+        document.getElementById('hero-input-container').style.display = 'flex';
+      }
     }
 
     function renderDiary() {
@@ -98,7 +112,45 @@
       });
     }
 
-    function saveHero() {
+    // Trigger gallery or reminder
+    function uploadArtefak() {
+      if (!canUpload) {
+        alert('Kamu baru saja meninggalkan jejak. Tunggu sebentar — biar kenanganmu punya ruang untuk bernapas.');
+        return;
+      }
+
+      // Open gallery
+      document.getElementById('file-input').click();
+    }
+
+    // Handle selected image
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imgSrc = e.target.result;
+        // Show image and prompt for notation
+        artefacts.unshift({
+          img: imgSrc,
+          notation: '' // empty, to trigger input
+        });
+        localStorage.setItem('nope_artefacts', JSON.stringify(artefacts));
+        renderHero();
+        renderTray();
+
+        // Show encouraging message
+        showConfirmation("Apa yang ingin kau sematkan pada gambar ini? (maks 4 kata)");
+        setTimeout(() => {
+          document.getElementById('hero-notation').focus();
+        }, 1000);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Save notation
+    function saveNotation() {
       const txt = document.getElementById('hero-notation').value.trim();
       if (!txt) return;
       const words = txt.split(/\s+/);
@@ -106,16 +158,25 @@
         alert('Maksimal 4 kata.');
         return;
       }
-      const newArtefak = {
-        img: `https://picsum.photos/384/480?random=${Date.now()}`,
-        notation: txt
-      };
-      artefacts.unshift(newArtefak);
+      artefacts[0].notation = txt;
       localStorage.setItem('nope_artefacts', JSON.stringify(artefacts));
+      localStorage.setItem('nope_last_upload', Date.now().toString());
       renderHero();
       renderTray();
       showConfirmation("Jejakmu tersimpan.");
     }
+
+    // Override Enter key in notation input
+    document.addEventListener('DOMContentLoaded', () => {
+      const notationInput = document.getElementById('hero-notation');
+      if (notationInput) {
+        notationInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            saveNotation();
+          }
+        });
+      }
+    });
 
     function postRant() {
       const v = document.getElementById('rant').value.trim();
@@ -137,13 +198,10 @@
     function showConfirmation(msg) {
       const el = document.getElementById('confirmation');
       el.textContent = msg;
-      setTimeout(() => el.textContent = "", 2000);
+      setTimeout(() => el.textContent = "", 3000);
     }
 
-    function goTo(page) {
-      window.location.href = page;
-    }
-
+    function goTo(page) { window.location.href = page; }
     function logout() {
       if (confirm('Keluar dari akun?')) {
         localStorage.removeItem('nope_username');
@@ -155,7 +213,7 @@
     renderHero();
     renderDiary();
     renderTray();
-    initRituals(); // Pulse
+    initRituals();
   </script>
 </body>
 </html>

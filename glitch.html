@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — GLITCH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('jejak.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span>GLITCH</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <div class="diary" style="margin-bottom:24px;">
+      <h3>Spill Archive</h3>
+      <p style="color:var(--muted); margin:8px 0;">Kumpulan curhat anonim yang mendapat 5+ peluk.</p>
+      <div class="diary-entry">
+        <time>12 Mei</time>
+        <p>“Aku lelah jadi kuat.”</p>
+      </div>
+    </div>
+
+    <div class="diary">
+      <h3>Hype Echo</h3>
+      <p style="color:var(--muted); margin:8px 0;">Antusiasme yang abadi.</p>
+      <div class="diary-entry">
+        <time>10 Mei</time>
+        <p>“Kenapa ending-nya kayak gitu sih?? Aku rela nunggu 10 tahun buat reunion!!!”</p>
+      </div>
+    </div>
+
+    <div class="tagline">
+      Arsip budaya generasi yang memilih kejujuran.<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+    function goTo(page) { window.location.href = page; }
+  </script>
+</body>
+</html>

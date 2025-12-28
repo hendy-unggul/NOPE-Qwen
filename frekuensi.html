@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Frekuensi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('jejak.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span>Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <div class="zones">
+      <div class="zone-item">
+        <div class="zone-icon">🎧</div>
+        <div class="zone-content">
+          <h3>Hype Haus</h3>
+          <p>“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
+          <div class="zone-actions">
+            <button class="zone-btn" onclick="sendReaction('🔥')">🔥</button>
+          </div>
+        </div>
+      </div>
+      <div class="zone-item">
+        <div class="zone-icon">💼</div>
+        <div class="zone-content">
+          <h3>Ngusahain</h3>
+          <p>“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
+          <div class="zone-actions">
+            <button class="zone-btn" onclick="sendReaction('+1')">+1</button>
+          </div>
+        </div>
+      </div>
+      <div class="zone-item">
+        <div class="zone-icon">💬</div>
+        <div class="zone-content">
+          <h3>Spill Zone</h3>
+          <p>“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
+          <div class="zone-actions">
+            <button class="zone-btn" onclick="sendReaction('🫂')">🫂</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tagline">
+      Temukan yang sefrekuensi.<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    function sendReaction(emoji) {
+      // Simulate saving reaction (in real app, this would be per-post)
+      alert(`Kamu mengirim ${emoji} — respons hanya terlihat oleh pengirim asli.`);
+    }
+
+    function goTo(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div style="text-align:center; margin-top:100px;">
+      <div class="logo">NOPE</div>
+      <p style="color:var(--muted); margin:16px 0;">Masukkan username (2 kata)</p>
+      <input id="username" type="text" placeholder="contoh: nadi ganteng" style="width:100%; padding:12px; background:var(--surface); border:1px solid var(--border); color:var(--text); border-radius:8px; margin:8px 0;">
+      <button onclick="login()" style="width:100%; padding:12px; background:var(--accent); color:#000; border:none; border-radius:8px; font-weight:600;">Masuk</button>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const u = document.getElementById('username').value.trim();
+      if (!u || u.split(' ').length !== 2) {
+        alert('Username harus terdiri dari 2 kata.');
+        return;
+      }
+      localStorage.setItem('nope_username', u);
+      window.location.href = 'jejak.html';
+    }
+  </script>
+</body>
+</html>

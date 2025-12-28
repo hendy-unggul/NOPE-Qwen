@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Jejak</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="logout()">⋯</button>
+        <div class="nav-mini">
+          <span>Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <!-- Artefak Hero -->
+    <div class="hero">
+      <img id="hero-img" src="" alt="artefak">
+      <div class="hero-input">
+        <input id="hero-notation" type="text" placeholder="notasi (maks 4 kata)" maxlength="50">
+        <button onclick="saveHero()">Simpan</button>
+      </div>
+    </div>
+
+    <!-- Rant Box -->
+    <div class="rant-box">
+      <textarea id="rant" placeholder="Jejakkan..."></textarea>
+      <button class="rant-cta" onclick="postRant()">Jejakkan</button>
+      <div class="confirmation" id="confirmation"></div>
+    </div>
+
+    <!-- Diary -->
+    <div class="diary" id="diary"></div>
+
+    <!-- Tray -->
+    <div class="tray" id="tray"></div>
+
+    <div class="tagline">
+      Untuk setiap jiwa<br>
+      yang memilih kejujuran<br>
+      tanpa meminta pengakuan.<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script src="rituals.js"></script>
+  <script>
+    // Load username
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    // Init artefacts & rants from localStorage
+    let artefacts = JSON.parse(localStorage.getItem('nope_artefacts') || '[]');
+    let rants = JSON.parse(localStorage.getItem('nope_rants') || '[]');
+
+    // Default artefak if empty
+    if (artefacts.length === 0) {
+      artefacts = [{ img: 'https://picsum.photos/384/480?random=1', notation: 'sunset' }];
+      localStorage.setItem('nope_artefacts', JSON.stringify(artefacts));
+    }
+
+    function renderHero() {
+      document.getElementById('hero-img').src = artefacts[0].img;
+      document.getElementById('hero-notation').value = artefacts[0].notation;
+    }
+
+    function renderDiary() {
+      const container = document.getElementById('diary');
+      container.innerHTML = '';
+      rants.slice(0, 5).forEach(r => {
+        const entry = document.createElement('div');
+        entry.className = 'diary-entry';
+        const date = new Date(r.timestamp).toLocaleDateString('id-ID', { day: '2-digit', month: 'short' });
+        entry.innerHTML = `<time>${date}</time><p>${r.content}</p>`;
+        container.appendChild(entry);
+      });
+    }
+
+    function renderTray() {
+      const tray = document.getElementById('tray');
+      tray.innerHTML = '';
+      artefacts.slice(0, 6).forEach(a => {
+        const div = document.createElement('div');
+        div.className = 'tray-slot';
+        div.style.backgroundImage = `url(${a.img})`;
+        tray.appendChild(div);
+      });
+    }
+
+    function saveHero() {
+      const txt = document.getElementById('hero-notation').value.trim();
+      if (!txt) return;
+      const words = txt.split(/\s+/);
+      if (words.length > 4) {
+        alert('Maksimal 4 kata.');
+        return;
+      }
+      const newArtefak = {
+        img: `https://picsum.photos/384/480?random=${Date.now()}`,
+        notation: txt
+      };
+      artefacts.unshift(newArtefak);
+      localStorage.setItem('nope_artefacts', JSON.stringify(artefacts));
+      renderHero();
+      renderTray();
+      showConfirmation("Jejakmu tersimpan.");
+    }
+
+    function postRant() {
+      const v = document.getElementById('rant').value.trim();
+      if (!v) return;
+      rants.unshift({
+        content: v,
+        timestamp: Date.now()
+      });
+      localStorage.setItem('nope_rants', JSON.stringify(rants));
+      document.getElementById('rant').value = '';
+      renderDiary();
+      showConfirmation("Jejakmu tersimpan.");
+    }
+
+    function showConfirmation(msg) {
+      const el = document.getElementById('confirmation');
+      el.textContent = msg;
+      setTimeout(() => el.textContent = "", 2000);
+    }
+
+    function goTo(page) {
+      window.location.href = page;
+    }
+
+    function logout() {
+      if (confirm('Keluar dari akun?')) {
+        localStorage.removeItem('nope_username');
+        window.location.href = 'index.html';
+      }
+    }
+
+    // Init
+    renderHero();
+    renderDiary();
+    renderTray();
+    initRituals(); // Pulse
+  </script>
+</body>
+</html>

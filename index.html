@@ -50,13 +50,13 @@
       margin-bottom: 30px;
     }
     input {
-      width: 100%;
-      padding: 16px 20px;
+      width: calc(100% - 32px); /* Adjusted width */
+      padding: 12px 16px; /* Reduced padding */
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
       color: var(--text);
-      font-size: 16px;
+      font-size: 14px; /* Reduced font size */
       caret-color: var(--accent);
       text-align: center;
       transition: all 0.2s ease;
@@ -86,6 +86,7 @@
       margin-top: 20px;
       overflow: hidden;
       position: relative;
+      width: 40%; /* Full width button */
     }
     .btn::before {
       content: '';
@@ -137,7 +138,7 @@
     
     <button class="btn" onclick="login()">Gaskeun!</button>
   </div>
-
+\
   <script>
     function login() {
       const u = document.getElementById('username').value.trim();

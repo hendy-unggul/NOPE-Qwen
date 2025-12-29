@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Cultural Picks</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pick-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .pick-title {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .pick-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .quote {
+      background: rgba(73,3,252,0.1);
+      border-left: 3px solid var(--accent);
+      padding: 14px;
+      margin: 16px 0;
+      font-style: italic;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 16px 20px;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .tagline strong {
+      color: var(--accent);
+      display: block;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('glitch.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <!-- Buku: Tan Malaka -->
+    <div class="pick-card">
+      <div class="pick-title">Buku: Madilog – Tan Malaka</div>
+      <div class="pick-meta">Bulan Ini • Kategori: Buku</div>
+      <p>Di tengah zaman yang takut berpikir, Madilog adalah senjata yang dilupakan.</p>
+      <div class="quote">
+        “Seorang pejuang harus berani sendiri. Karena kebenaran seringkali lahir di tempat yang sepi.”
+      </div>
+      <p>Tan Malaka tidak menulis buku — ia menulis panggilan untuk berani berpikir.</p>
+    </div>
+
+    <!-- Musik: Hindia -->
+    <div class="pick-card">
+      <div class="pick-title">Lagu: Besok, Lusa, Nanti – Hindia</div>
+      <div class="pick-meta">Edisi Sebelumnya • Kategori: Musik</div>
+      <p>Lagu ini bukan tentang harapan — tapi tentang kelelahan menunggu.</p>
+      <div class="quote">
+        “Kita janji bertemu di masa depan, tapi masa depan tak pernah datang.”
+      </div>
+      <p>Hindia menggugat optimisme buta generasi kita yang terus menunda hidup.</p>
+    </div>
+
+    <!-- Film: Reza Rahadian -->
+    <div class="pick-card">
+      <div class="pick-title">Film: Kapan Kita Menikah? – Reza Rahadian</div>
+      <div class="pick-meta">Edisi Sebelumnya • Kategori: Film</div>
+      <p>Di tengah pujian yang membungkam, keberanian justru lahir dari pertanyaan.</p>
+      <div class="quote">
+        “Aktingnya terasa seperti robot emosional: senyum sempurna, tapi mata tak bergetar.”
+      </div>
+      <p>Reza terjebak dalam mitos “aktor sempurna” — yang membuatnya takut menunjukkan kegagalan.</p>
+    </div>
+
+    <div class="tagline">
+      Kami mengarsip yang tak minta diingat —<br>
+      tapi layak dikenang.<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    function goTo(page) { window.location.href = page; }
+  </script>
+</body>
+</html>

@@ -6,22 +6,49 @@
   <title>NOPE — Frekuensi</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Fade-in untuk rant */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
+    .zone-post-container {
+      margin: 8px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
     }
     .zone-post {
-      margin: 6px 0;
       font-size: 13px;
       color: var(--text);
-      opacity: 0;
-      animation: fadeIn 0.5s forwards;
+      margin-bottom: 6px;
+      line-height: 1.4;
     }
-    /* Delay berbeda untuk setiap rant */
-    .zone-post:nth-child(1) { animation-delay: 0.1s; }
-    .zone-post:nth-child(2) { animation-delay: 0.2s; }
-    .zone-post:nth-child(3) { animation-delay: 0.3s; }
+    .post-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .post-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .post-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .zone-icon {
+      font-size: 18px;
+    }
+    .zone-content p {
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .zone-actions {
+      margin-top: 12px;
+    }
   </style>
 </head>
 <body>
@@ -51,14 +78,25 @@
         <div class="zone-icon">🎧</div>
         <div class="zone-content">
           <h3>Hype Haus</h3>
-          <p style="margin-bottom:12px;">“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
+          <p>“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
           
-          <div class="zone-post">@dila: V!!!!!</div>
-          <div class="zone-post">@nadi: endingnya bikin aku nangis 2 jam</div>
-          <div class="zone-post">@indra: OP BANGET</div>
-          
-          <div class="zone-actions" style="margin-top:12px;">
-            <button class="zone-btn" onclick="sendReaction('🔥')">🔥</button>
+          <div class="zone-post-container">
+            <div class="zone-post">@dila: V!!!!!</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('🔥')">🔥</button>
+            </div>
+          </div>
+          <div class="zone-post-container">
+            <div class="zone-post">@nadi: endingnya bikin aku nangis 2 jam</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('🔥')">🔥</button>
+            </div>
+          </div>
+          <div class="zone-post-container">
+            <div class="zone-post">@indra: OP BANGET</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('🔥')">🔥</button>
+            </div>
           </div>
         </div>
       </div>
@@ -68,14 +106,25 @@
         <div class="zone-icon">💼</div>
         <div class="zone-content">
           <h3>Ngusahain</h3>
-          <p style="margin-bottom:12px;">“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
+          <p>“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
           
-          <div class="zone-post">@raka: hari ke-47. belum kelar.</div>
-          <div class="zone-post">@fiki: jualan laku 3. untung 50rb.</div>
-          <div class="zone-post">@zahra: gambar masih jelek. tapi latihan.</div>
-          
-          <div class="zone-actions" style="margin-top:12px;">
-            <button class="zone-btn" onclick="sendReaction('+1')">+1</button>
+          <div class="zone-post-container">
+            <div class="zone-post">@raka: hari ke-47. belum kelar.</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('+1')">+1</button>
+            </div>
+          </div>
+          <div class="zone-post-container">
+            <div class="zone-post">@fiki: jualan laku 3. untung 50rb.</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('+1')">+1</button>
+            </div>
+          </div>
+          <div class="zone-post-container">
+            <div class="zone-post">@zahra: gambar masih jelek. tapi latihan.</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('+1')">+1</button>
+            </div>
           </div>
         </div>
       </div>
@@ -85,14 +134,25 @@
         <div class="zone-icon">💬</div>
         <div class="zone-content">
           <h3>Spill Zone</h3>
-          <p style="margin-bottom:12px;">“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
+          <p>“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
           
-          <div class="zone-post">@zahra: capek jadi kuat.</div>
-          <div class="zone-post">@raka: skripsi mentok. ngerasa bodoh.</div>
-          <div class="zone-post">@lala: sendiri. hujan. berat.</div>
-          
-          <div class="zone-actions" style="margin-top:12px;">
-            <button class="zone-btn" onclick="sendReaction('🫂')">🫂</button>
+          <div class="zone-post-container">
+            <div class="zone-post">@zahra: capek jadi kuat.</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('🫂')">🫂</button>
+            </div>
+          </div>
+          <div class="zone-post-container">
+            <div class="zone-post">@raka: skripsi mentok. ngerasa bodoh.</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('🫂')">🫂</button>
+            </div>
+          </div>
+          <div class="zone-post-container">
+            <div class="zone-post">@lala: sendiri. hujan. berat.</div>
+            <div class="post-actions">
+              <button class="post-btn" onclick="sendReaction('🫂')">🫂</button>
+            </div>
           </div>
         </div>
       </div>
@@ -109,8 +169,8 @@
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
 
     function sendReaction(emoji) {
-      // Di Phase 2, ini akan kirim ke Supabase
-      alert(`Kamu mengirim ${emoji} ke ruang ini. Hanya pengirim asli yang tahu.`);
+      // Simulasi: hanya tampilkan notifikasi
+      alert(`Kamu mengirim ${emoji} — respons hanya terlihat oleh pengirim asli.`);
     }
 
     function goTo(page) {

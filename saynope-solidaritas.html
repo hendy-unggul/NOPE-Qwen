@@ -3,37 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NOPE — Solidaritas</title>
+  <title>NOPE — Petisi</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .request-card {
+    .petition-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
     }
-    .post-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
+    .petition-title {
+      font-size: 18px;
+      margin-bottom: 12px;
     }
-    .post-username {
-      color: var(--muted);
-      font-weight: 600;
+    .petition-progress {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin: 16px 0;
+      overflow: hidden;
+    }
+    .bar {
+      height: 100%;
+      background: var(--accent);
+      width: 60%;
+    }
+    .count {
       font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
     }
     .btn-accent {
       background: var(--accent);
       color: #000;
       border: none;
       border-radius: 8px;
-      padding: 10px;
+      padding: 12px;
       width: 100%;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 8px;
+    }
+    .next-step {
+      background: rgba(73,3,252,0.1);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+      font-size: 13px;
     }
   </style>
 </head>
@@ -56,54 +72,30 @@
 
     <!-- BANNER SEMENTARA -->
     <div style="background: rgba(73,3,252,0.1); border: 1px solid var(--accent); border-radius: 12px; padding: 14px; margin: 16px 0; font-size: 13px; color: var(--accent);">
-      🤝 Ruang solidaritas ini sedang dalam kurasi komunitas.<br>
-      Setiap dukungan akan diarahkan langsung ke penerima —<br>
-      tanpa perantara, tanpa pengakuan.<br>
-      <strong>Kami menjaganya agar tetap aman & sefrekuensi.</strong>
+      🌱 Sedang kami bangun bersama Penjaga Frekuensi.<br>
+      Petisi di sini akan diverifikasi & dihubungkan langsung ke pihak terkait.<br>
+      <strong>Kami mengundangmu untuk jadi bagian dari proses ini.</strong>
     </div>
 
-    <div class="request-card">
-      <div class="post-header">
-        <span class="post-username">@zahra</span>
+    <div class="petition-card">
+      <div class="petition-title">Hentikan PHK Sepihak di Startup X</div>
+      <p>Kami menuntut transparansi proses PHK dan kompensasi layak bagi 47 karyawan yang di-PHK tanpa peringatan.</p>
+      
+      <div class="petition-progress">
+        <div class="bar"></div>
       </div>
-      <div class="post-content">Biaya cetak zine edisi perdana NOPE.</div>
+      <div class="count">127 dari 500 tanda tangan</div>
       
-      <div style="margin:12px 0; font-size:12px; color:var(--muted);">
-        Dompet donasi: Kitabisa (terverifikasi)
-      </div>
+      <button class="btn-accent" onclick="signPetition()">Tanda Tangan</button>
       
-      <a href="https://kitabisa.com/zahra-nope" target="_blank" style="text-decoration:none;">
-        <button class="btn-accent">
-          Kirim Dukungan Langsung
-        </button>
-      </a>
-      
-      <div style="margin-top:8px; font-size:11px; color:var(--muted);">
-        ✅ Terhubung Langsung • Diverifikasi oleh Penjaga Frekuensi
-      </div>
-    </div>
-
-    <div class="request-card">
-      <div class="post-header">
-        <span class="post-username">@fiki</span>
-      </div>
-      <div class="post-content">Modal awal jualan thrifting untuk mahasiswa.</div>
-      
-      <div style="margin:12px 0; font-size:12px; color:var(--muted);">
-        Rekening pribadi (terverifikasi)
-      </div>
-      
-      <button class="btn-accent" onclick="alert('Nomor rekening dikirim via DM aman.')">
-        Kirim Dukungan Langsung
-      </button>
-      
-      <div style="margin-top:8px; font-size:11px; color:var(--muted);">
-        ✅ Terhubung Langsung • Diverifikasi oleh Penjaga Frekuensi
+      <div class="next-step">
+        <strong>Langkah Selanjutnya:</strong> Kirim ke media lokal dan Kemenaker.
       </div>
     </div>
 
     <div class="tagline">
-      Dukungan tak terlihat, tapi terasa.<br>
+      Kamu ga aneh.<br>
+      Sistemnya yang broken!<br>
       <strong>— Glitch Generation</strong>
     </div>
   </div>
@@ -112,6 +104,9 @@
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
 
     function goTo(page) { window.location.href = page; }
+    function signPetition() {
+      alert('Terima kasih! Namamu telah ditambahkan.');
+    }
   </script>
 </body>
 </html>

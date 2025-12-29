@@ -24,6 +24,7 @@
       border-radius: 12px;
       padding: 14px;
       margin-bottom: 12px;
+      position: relative;
     }
     .post-header {
       display: flex;
@@ -41,33 +42,70 @@
       font-size: 14px;
       opacity: 0.7;
     }
-    .comment-input {
-      width: 100%;
+    /* Pulsing emoji */
+    .emoji-pulse {
+      animation: pulse 1.8s infinite ease-in-out;
+      display: inline-block;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 0.7; transform: scale(1); }
+    }
+    /* Recent reactors */
+    .recent-reactors {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .rantbox-thread {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
+      border-radius: 16px;
+      padding: 14px;
+      margin: 16px 0;
+      position: relative;
+    }
+    .rantbox-thread textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
       color: var(--text);
-      margin: 12px 0;
-    }
-    .emoji-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 8px;
-    }
-    .emoji-btn {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
+      line-height: 1.4;
+      resize: none;
+      min-height: 80px;
+    }
+    .rantbox-thread textarea:focus {
+      outline: none;
+    }
+    .rantbox-cta {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
       cursor: pointer;
     }
-    .emoji-btn:hover {
-      border-color: var(--accent);
+    .tagline {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 16px 20px;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .tagline strong {
       color: var(--accent);
+      display: block;
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -88,23 +126,32 @@
 
     <div class="greeting">Hello @<span id="username-display"></span></div>
 
+    <!-- Rantbox untuk Thread Baru -->
+    <div class="rantbox-thread">
+      <textarea id="new-thread" placeholder="Buat thread baru (wajib mulai dengan #tag)"></textarea>
+      <button class="rantbox-cta" id="post-thread-btn" onclick="postNewThread()" disabled>Kirim</button>
+    </div>
+
+    <!-- Thread yang aktif -->
     <div class="thread-header">
       <div class="tag">#skripsimentok</div>
     </div>
 
+    <!-- Post Utama -->
     <div class="thread-post">
       <div class="post-header">
         <span class="post-username">@raka</span>
         <span class="post-emoji">✊</span>
       </div>
       <div class="post-content">hari ke-47. belum kelar. ada yang juga?</div>
-      <div class="emoji-actions">
-        <button class="emoji-btn" onclick="react('🔥')">🔥</button>
-        <button class="emoji-btn" onclick="react('🫂')">🫂</button>
-        <button class="emoji-btn" onclick="react('✊')">✊</button>
+      <!-- Emoji pulsing + 3 pengirim terakhir -->
+      <div class="emoji-pulse">🔥</div>
+      <div class="recent-reactors">
+        @zahra, @nadi, @fiki mengirim 🔥
       </div>
     </div>
 
+    <!-- Komentar -->
     <div class="comments">
       <div class="comment">
         <div class="post-header">
@@ -112,16 +159,18 @@
           <span class="post-emoji">🫂</span>
         </div>
         <div class="post-content">aku juga. butuh teman diskusi?</div>
-        <div class="emoji-actions">
-          <button class="emoji-btn" onclick="react('🔥')">🔥</button>
-          <button class="emoji-btn" onclick="react('🫂')">🫂</button>
-          <button class="emoji-btn" onclick="react('✊')">✊</button>
+        <div class="emoji-pulse">🫂</div>
+        <div class="recent-reactors">
+          @raka, @lala mengirim 🫂
         </div>
       </div>
     </div>
 
-    <textarea class="comment-input" placeholder="Tulis komentarmu..."></textarea>
-    <button class="rant-cta" style="width:100%; margin-bottom:20px;" onclick="postComment()">Kirim</button>
+    <!-- Komentar Box -->
+    <div class="rantbox-thread">
+      <textarea id="new-comment" placeholder="Tulis komentarmu..."></textarea>
+      <button class="rantbox-cta" onclick="postComment()">Kirim</button>
+    </div>
 
     <div class="tagline">
       Di sini, kata-kata jadi tindakan.<br>
@@ -132,9 +181,27 @@
   <script>
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
 
+    // Validasi rantbox: hanya aktif jika ada #tag
+    document.getElementById('new-thread').addEventListener('input', function() {
+      const text = this.value.trim();
+      const btn = document.getElementById('post-thread-btn');
+      // Cek apakah dimulai dengan # dan ada spasi setelahnya (minimal #tag)
+      const hasTag = text.startsWith('#') && text.split(' ')[0].length > 1;
+      btn.disabled = !hasTag;
+    });
+
     function goTo(page) { window.location.href = page; }
-    function react(emoji) { alert(`Kamu mengirim ${emoji}`); }
-    function postComment() { alert('Komentar dikirim!'); }
+    function postNewThread() {
+      const text = document.getElementById('new-thread').value.trim();
+      if (!text.startsWith('#')) return;
+      alert('Thread baru dibuat dengan tag: ' + text.split(' ')[0]);
+    }
+    function postComment() {
+      const text = document.getElementById('new-comment').value.trim();
+      if (!text) return;
+      alert('Komentar dikirim!');
+      document.getElementById('new-comment').value = '';
+    }
   </script>
 </body>
 </html>

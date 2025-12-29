@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Solidaritas</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .request-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .post-username {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('saynope.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
 
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <div class="request-card">
+      <div class="post-header">
+        <span class="post-username">@zahra</span>
+      </div>
+      <div class="post-content">skripsiku mentok. butuh teman diskusi.</div>
+      <button class="btn-outline" onclick="sendSupport()">Kirim Dukungan</button>
+    </div>
+
+    <div class="request-card">
+      <div class="post-header">
+        <span class="post-username">@fiki</span>
+      </div>
+      <div class="post-content">jualan thrifting sepi. butuh ide promosi.</div>
+      <button class="btn-outline" onclick="sendSupport()">Kirim Dukungan</button>
+    </div>
+
+    <div class="tagline">
+      Dukungan tak terlihat, tapi terasa.<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    function goTo(page) { window.location.href = page; }
+    function sendSupport() {
+      const msg = prompt('Kirim pesan dukungan (maks 100 huruf):');
+      if (msg) alert('Dukungan terkirim! Hanya penerima yang melihat.');
+    }
+  </script>
+</body>
+</html>

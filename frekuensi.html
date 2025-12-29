@@ -7,36 +7,35 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .zone-post-container {
-      margin: 8px 0;
+      margin: 10px 0;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
     }
     .zone-post {
       font-size: 13px;
       color: var(--text);
-      margin-bottom: 6px;
       line-height: 1.4;
     }
-    .post-actions {
-      display: flex;
-      gap: 12px;
-    }
-    .post-btn {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+    /* Username + emoji dalam satu baris */
+    .post-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 14px;
+      gap: 6px;
+      margin-bottom: 4px;
     }
-    .post-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+    .post-username {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .post-emoji {
+      color: var(--muted);
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    .post-content {
+      color: var(--text);
+      font-size: 13px;
     }
     .zone-icon {
       font-size: 18px;
@@ -45,9 +44,6 @@
       margin-bottom: 12px;
       color: var(--muted);
       font-size: 13px;
-    }
-    .zone-actions {
-      margin-top: 12px;
     }
   </style>
 </head>
@@ -81,22 +77,25 @@
           <p>“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
           
           <div class="zone-post-container">
-            <div class="zone-post">@dila: V!!!!!</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('🔥')">🔥</button>
+            <div class="post-header">
+              <span class="post-username">@dila</span>
+              <span class="post-emoji">🔥</span>
             </div>
+            <div class="post-content">V!!!!!</div>
           </div>
           <div class="zone-post-container">
-            <div class="zone-post">@nadi: endingnya bikin aku nangis 2 jam</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('🔥')">🔥</button>
+            <div class="post-header">
+              <span class="post-username">@nadi</span>
+              <span class="post-emoji">🔥</span>
             </div>
+            <div class="post-content">endingnya bikin aku nangis 2 jam</div>
           </div>
           <div class="zone-post-container">
-            <div class="zone-post">@indra: OP BANGET</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('🔥')">🔥</button>
+            <div class="post-header">
+              <span class="post-username">@indra</span>
+              <span class="post-emoji">🔥</span>
             </div>
+            <div class="post-content">OP BANGET</div>
           </div>
         </div>
       </div>
@@ -109,22 +108,25 @@
           <p>“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
           
           <div class="zone-post-container">
-            <div class="zone-post">@raka: hari ke-47. belum kelar.</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('+1')">+1</button>
+            <div class="post-header">
+              <span class="post-username">@raka</span>
+              <span class="post-emoji">+1</span>
             </div>
+            <div class="post-content">hari ke-47. belum kelar.</div>
           </div>
           <div class="zone-post-container">
-            <div class="zone-post">@fiki: jualan laku 3. untung 50rb.</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('+1')">+1</button>
+            <div class="post-header">
+              <span class="post-username">@fiki</span>
+              <span class="post-emoji">+1</span>
             </div>
+            <div class="post-content">jualan laku 3. untung 50rb.</div>
           </div>
           <div class="zone-post-container">
-            <div class="zone-post">@zahra: gambar masih jelek. tapi latihan.</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('+1')">+1</button>
+            <div class="post-header">
+              <span class="post-username">@zahra</span>
+              <span class="post-emoji">+1</span>
             </div>
+            <div class="post-content">gambar masih jelek. tapi latihan.</div>
           </div>
         </div>
       </div>
@@ -137,22 +139,25 @@
           <p>“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
           
           <div class="zone-post-container">
-            <div class="zone-post">@zahra: capek jadi kuat.</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('🫂')">🫂</button>
+            <div class="post-header">
+              <span class="post-username">@zahra</span>
+              <span class="post-emoji">🫂</span>
             </div>
+            <div class="post-content">capek jadi kuat.</div>
           </div>
           <div class="zone-post-container">
-            <div class="zone-post">@raka: skripsi mentok. ngerasa bodoh.</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('🫂')">🫂</button>
+            <div class="post-header">
+              <span class="post-username">@raka</span>
+              <span class="post-emoji">🫂</span>
             </div>
+            <div class="post-content">skripsi mentok. ngerasa bodoh.</div>
           </div>
           <div class="zone-post-container">
-            <div class="zone-post">@lala: sendiri. hujan. berat.</div>
-            <div class="post-actions">
-              <button class="post-btn" onclick="sendReaction('🫂')">🫂</button>
+            <div class="post-header">
+              <span class="post-username">@lala</span>
+              <span class="post-emoji">🫂</span>
             </div>
+            <div class="post-content">sendiri. hujan. berat.</div>
           </div>
         </div>
       </div>
@@ -167,11 +172,6 @@
 
   <script>
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
-
-    function sendReaction(emoji) {
-      // Simulasi: hanya tampilkan notifikasi
-      alert(`Kamu mengirim ${emoji} — respons hanya terlihat oleh pengirim asli.`);
-    }
 
     function goTo(page) {
       window.location.href = page;

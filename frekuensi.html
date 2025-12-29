@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NOPE — Frekuensi</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Fade-in untuk rant */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .zone-post {
+      margin: 6px 0;
+      font-size: 13px;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+    /* Delay berbeda untuk setiap rant */
+    .zone-post:nth-child(1) { animation-delay: 0.1s; }
+    .zone-post:nth-child(2) { animation-delay: 0.2s; }
+    .zone-post:nth-child(3) { animation-delay: 0.3s; }
+  </style>
 </head>
 <body>
   <div class="wrapper">
@@ -33,9 +51,13 @@
         <div class="zone-icon">🎧</div>
         <div class="zone-content">
           <h3>Hype Haus</h3>
-          <p>“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
-          <div class="zone-posts" id="hype-posts" style="margin:12px 0; max-height:180px; overflow-y:auto; font-size:13px;"></div>
-          <div class="zone-actions">
+          <p style="margin-bottom:12px;">“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
+          
+          <div class="zone-post">@dila: V!!!!!</div>
+          <div class="zone-post">@nadi: endingnya bikin aku nangis 2 jam</div>
+          <div class="zone-post">@indra: OP BANGET</div>
+          
+          <div class="zone-actions" style="margin-top:12px;">
             <button class="zone-btn" onclick="sendReaction('🔥')">🔥</button>
           </div>
         </div>
@@ -46,9 +68,13 @@
         <div class="zone-icon">💼</div>
         <div class="zone-content">
           <h3>Ngusahain</h3>
-          <p>“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
-          <div class="zone-posts" id="usaha-posts" style="margin:12px 0; max-height:180px; overflow-y:auto; font-size:13px;"></div>
-          <div class="zone-actions">
+          <p style="margin-bottom:12px;">“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
+          
+          <div class="zone-post">@raka: hari ke-47. belum kelar.</div>
+          <div class="zone-post">@fiki: jualan laku 3. untung 50rb.</div>
+          <div class="zone-post">@zahra: gambar masih jelek. tapi latihan.</div>
+          
+          <div class="zone-actions" style="margin-top:12px;">
             <button class="zone-btn" onclick="sendReaction('+1')">+1</button>
           </div>
         </div>
@@ -59,9 +85,13 @@
         <div class="zone-icon">💬</div>
         <div class="zone-content">
           <h3>Spill Zone</h3>
-          <p>“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
-          <div class="zone-posts" id="spill-posts" style="margin:12px 0; max-height:180px; overflow-y:auto; font-size:13px;"></div>
-          <div class="zone-actions">
+          <p style="margin-bottom:12px;">“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
+          
+          <div class="zone-post">@zahra: capek jadi kuat.</div>
+          <div class="zone-post">@raka: skripsi mentok. ngerasa bodoh.</div>
+          <div class="zone-post">@lala: sendiri. hujan. berat.</div>
+          
+          <div class="zone-actions" style="margin-top:12px;">
             <button class="zone-btn" onclick="sendReaction('🫂')">🫂</button>
           </div>
         </div>
@@ -78,128 +108,8 @@
   <script>
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
 
-    // === DUMMY RANT DINAMIS ===
-    const DUMMY_HYPE = [
-      "@dila: V!!",
-      "@nadi: Ending drakor ini bikin aku rela nunggu 10 tahun.",
-      "@indra: Patch 10.1 OP banget.",
-      "@tata: Lip cream glowing di kulit gelap!",
-      "@fiki: Ketemu jaket Nirvana asli!",
-      "@cia: Zine layout glitch aesthetic banget.",
-      "@oka: Sunset Bromo bikin lupa masalah.",
-      "@zahra: Pameran seni warnanya bikin jiwa tenang.",
-      "@gita: Lagu ini jadi soundtrack hidupku.",
-      "@lala: Buku puisi ini nembak jantung.",
-      "@raka: Scene ini bikin skripsi nggak kelar.",
-      "@maya: Novel AU-nya gila.",
-      "@bima: Riding bareng, langit oranye.",
-      "@ella: Cat tidur di laptop — hype hari ini.",
-      "@yoga: Deadlift 100kg. Done.",
-      "@nisa: Buka puasa + variety show Korea.",
-      "@adit: Potret hasilnya kayak film.",
-      "@rian: Debugging berhasil jam 3 pagi.",
-      "@sari: Nonton drakor sendiri. Quality time.",
-      "@gita: Invoice pertama. Nangis seneng."
-    ];
-
-    const DUMMY_USAHA = [
-      "@raka: Hari ke-47 skripsi belum kelar. Tapi aku masih di sini.",
-      "@fiki: Jualan laku 3 item. Untung 50rb.",
-      "@zahra: Latihan gambar tiap hari. Belum bagus, tapi konsisten.",
-      "@rian: Coding 8 jam. Bug ketemu!",
-      "@gita: Freelance klien ke-2. Masih grogi.",
-      "@tata: Belajar makeup. Masih belepotan.",
-      "@indra: Rank naik 1 tier. 200 jam main.",
-      "@lala: Nulis puisi tiap malam. Belum berani publish.",
-      "@maya: Nulis novel chapter 3. Belum ada yang baca.",
-      "@oka: Backpacking sendiri. Takut tapi excited.",
-      "@cia: Zine edisi 1. Cetak manual, tangan kotor.",
-      "@dila: Belajar dance sendiri. Happy.",
-      "@nadi: Jurnal hari ke-30. Masih nangis.",
-      "@sari: Jualan online. Dapat 5 order.",
-      "@ella: Rawat kucing sakit. Belum tidur 24 jam.",
-      "@yoga: Gym hari ke-5. Badan remuk.",
-      "@bima: Servis motor sendiri. Oli tumpah, tapi berhasil.",
-      "@nisa: Puasa senin kamis. Hari pertama.",
-      "@adit: Potret 100 foto, bagus cuma 2.",
-      "@gita: Lamaran kerja ke-15. Belum ada kabar."
-    ];
-
-    const DUMMY_SPILL = [
-      "@zahra: capek.",
-      "@raka: Skripsi mentok. Ngerasa bodoh.",
-      "@lala: Sendiri, hujan, berat.",
-      "@gita: Makan nasi putih hari ini.",
-      "@dila: Dighosting bestie. Gak ngerti salah.",
-      "@fiki: Jualan sepi. Mikir buat berhenti.",
-      "@rian: Coding error terus. Nggak cukup pintar.",
-      "@tata: Dibilang makeup berlebihan. Aku cuma mau pede.",
-      "@indra: Main game buat pelarian.",
-      "@maya: Takut nggak ada yang baca novelku.",
-      "@oka: Rindu rumah, tapi malu pulang.",
-      "@cia: Zine-ku dikomentari ‘nggak jualan’.",
-      "@nadi: Nangis karena kopi tumpah.",
-      "@sari: Anak nangis minta susu. Aku nahan air mata.",
-      "@ella: Takut kehilangan kucingku.",
-      "@yoga: Masalahnya masih di sini.",
-      "@bima: Motor mogok. Nggak punya uang servis.",
-      "@nisa: Puasa, tapi hati nggak tenang.",
-      "@adit: Potret dikomentari ‘jelek’.",
-      "@gita: Dibilang terlalu sensitif. Padahal aku cuma manusia."
-    ];
-
-    // Load atau init dummy
-    function initDummy(zoneKey, dummyList) {
-      const key = `nope_dummy_${zoneKey}`;
-      if (!localStorage.getItem(key)) {
-        localStorage.setItem(key, JSON.stringify(dummyList));
-      }
-    }
-
-    function renderPosts(zoneId, posts) {
-      const container = document.getElementById(zoneId);
-      container.innerHTML = '';
-      posts.forEach(post => {
-        const div = document.createElement('div');
-        div.style.marginBottom = '8px';
-        div.style.color = 'var(--text)';
-        div.textContent = post;
-        container.appendChild(div);
-      });
-    }
-
-    function getPosts(zoneKey, dummyList) {
-      // Ambil rant asli (simulasi: ambil dari Jejak)
-      const userRants = JSON.parse(localStorage.getItem('nope_rants') || '[]');
-      const userPosts = userRants.map(r => `@kamu: ${r.content}`).slice(0, 5); // ambil 5 terbaru
-      
-      // Ambil dummy
-      const dummyPosts = JSON.parse(localStorage.getItem(`nope_dummy_${zoneKey}`) || '[]');
-      
-      // Gabung: user di atas, dummy di bawah
-      let allPosts = [...userPosts, ...dummyPosts];
-      
-      // Batasi 20
-      if (allPosts.length > 20) {
-        allPosts = allPosts.slice(0, 20);
-        // Simpan dummy yang baru (tanpa yang tergeser)
-        const newDummy = allPosts.slice(userPosts.length);
-        localStorage.setItem(`nope_dummy_${zoneKey}`, JSON.stringify(newDummy));
-      }
-      
-      return allPosts;
-    }
-
-    // Init
-    initDummy('hype', DUMMY_HYPE);
-    initDummy('usaha', DUMMY_USAHA);
-    initDummy('spill', DUMMY_SPILL);
-
-    renderPosts('hype-posts', getPosts('hype', DUMMY_HYPE));
-    renderPosts('usaha-posts', getPosts('usaha', DUMMY_USAHA));
-    renderPosts('spill-posts', getPosts('spill', DUMMY_SPILL));
-
     function sendReaction(emoji) {
+      // Di Phase 2, ini akan kirim ke Supabase
       alert(`Kamu mengirim ${emoji} ke ruang ini. Hanya pengirim asli yang tahu.`);
     }
 

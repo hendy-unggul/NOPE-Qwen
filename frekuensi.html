@@ -16,7 +16,6 @@
       color: var(--text);
       line-height: 1.4;
     }
-    /* Username + emoji dalam satu baris */
     .post-header {
       display: flex;
       align-items: center;
@@ -40,10 +39,19 @@
     .zone-icon {
       font-size: 18px;
     }
-    .zone-content p {
-      margin-bottom: 12px;
+    .zone-title {
+      margin-bottom: 4px;
+    }
+    .zone-description {
       color: var(--muted);
       font-size: 13px;
+      margin-bottom: 12px;
+    }
+    /* Garis tipis di bawah microcopy */
+    .zone-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 12px 0;
     }
   </style>
 </head>
@@ -73,8 +81,9 @@
       <div class="zone-item">
         <div class="zone-icon">🎧</div>
         <div class="zone-content">
-          <h3>Hype Haus</h3>
-          <p>“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
+          <h3 class="zone-title">Hype Haus</h3>
+          <p class="zone-description">“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
+          <div class="zone-divider"></div> <!-- GARIS TIPIS DI SINI -->
           
           <div class="zone-post-container">
             <div class="post-header">
@@ -104,8 +113,9 @@
       <div class="zone-item">
         <div class="zone-icon">💼</div>
         <div class="zone-content">
-          <h3>Ngusahain</h3>
-          <p>“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
+          <h3 class="zone-title">Ngusahain</h3>
+          <p class="zone-description">“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
+          <div class="zone-divider"></div> <!-- GARIS TIPIS DI SINI -->
           
           <div class="zone-post-container">
             <div class="post-header">
@@ -135,8 +145,9 @@
       <div class="zone-item">
         <div class="zone-icon">💬</div>
         <div class="zone-content">
-          <h3>Spill Zone</h3>
-          <p>“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
+          <h3 class="zone-title">Spill Zone</h3>
+          <p class="zone-description">“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
+          <div class="zone-divider"></div> <!-- GARIS TIPIS DI SINI -->
           
           <div class="zone-post-container">
             <div class="post-header">

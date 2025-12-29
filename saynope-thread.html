@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Rant Thread</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .thread-header {
+      text-align: center;
+      margin: 16px 0;
+    }
+    .tag {
+      background: var(--accent);
+      color: #000;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .thread-post, .comment {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .post-username {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .post-emoji {
+      color: var(--muted);
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    .comment-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--text);
+      margin: 12px 0;
+    }
+    .emoji-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .emoji-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .emoji-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('saynope.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
 
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <div class="thread-header">
+      <div class="tag">#skripsimentok</div>
+    </div>
+
+    <div class="thread-post">
+      <div class="post-header">
+        <span class="post-username">@raka</span>
+        <span class="post-emoji">✊</span>
+      </div>
+      <div class="post-content">hari ke-47. belum kelar. ada yang juga?</div>
+      <div class="emoji-actions">
+        <button class="emoji-btn" onclick="react('🔥')">🔥</button>
+        <button class="emoji-btn" onclick="react('🫂')">🫂</button>
+        <button class="emoji-btn" onclick="react('✊')">✊</button>
+      </div>
+    </div>
+
+    <div class="comments">
+      <div class="comment">
+        <div class="post-header">
+          <span class="post-username">@zahra</span>
+          <span class="post-emoji">🫂</span>
+        </div>
+        <div class="post-content">aku juga. butuh teman diskusi?</div>
+        <div class="emoji-actions">
+          <button class="emoji-btn" onclick="react('🔥')">🔥</button>
+          <button class="emoji-btn" onclick="react('🫂')">🫂</button>
+          <button class="emoji-btn" onclick="react('✊')">✊</button>
+        </div>
+      </div>
+    </div>
+
+    <textarea class="comment-input" placeholder="Tulis komentarmu..."></textarea>
+    <button class="rant-cta" style="width:100%; margin-bottom:20px;" onclick="postComment()">Kirim</button>
+
+    <div class="tagline">
+      Di sini, kata-kata jadi tindakan.<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    function goTo(page) { window.location.href = page; }
+    function react(emoji) { alert(`Kamu mengirim ${emoji}`); }
+    function postComment() { alert('Komentar dikirim!'); }
+  </script>
+</body>
+</html>

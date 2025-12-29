@@ -23,6 +23,10 @@
 
     <div class="greeting">Hello @<span id="username-display"></span></div>
 
+    <div class="intro" style="text-align:center; margin:24px 0; color:var(--muted); font-size:13px;">
+      Temukan yang bergetar di frekuensi yang sama.
+    </div>
+
     <div class="zones">
       <div class="zone-item">
         <div class="zone-icon">🎧</div>
@@ -57,7 +61,8 @@
     </div>
 
     <div class="tagline">
-      Temukan yang sefrekuensi.<br>
+      Ga perlu follower.<br>
+      Cuma butuh sefrekuensi.<br>
       <strong>— Glitch Generation</strong>
     </div>
   </div>
@@ -66,8 +71,7 @@
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
 
     function sendReaction(emoji) {
-      // Simulate saving reaction (in real app, this would be per-post)
-      alert(`Kamu mengirim ${emoji} — respons hanya terlihat oleh pengirim asli.`);
+      alert(`Kamu mengirim ${emoji} ke ruang ini. Hanya pengirim asli yang tahu.`);
     }
 
     function goTo(page) {

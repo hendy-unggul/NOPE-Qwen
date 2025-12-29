@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Petisi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .petition-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .petition-title {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .petition-progress {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin: 16px 0;
+      overflow: hidden;
+    }
+    .bar {
+      height: 100%;
+      background: var(--accent);
+      width: 60%;
+    }
+    .count {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      width: 100%;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .next-step {
+      background: rgba(73,3,252,0.1);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('saynope.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
 
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <div class="petition-card">
+      <div class="petition-title">Hentikan PHK Sepihak di Startup X</div>
+      <p>Kami menuntut transparansi proses PHK dan kompensasi layak bagi 47 karyawan yang di-PHK tanpa peringatan.</p>
+      
+      <div class="petition-progress">
+        <div class="bar"></div>
+      </div>
+      <div class="count">127 dari 500 tanda tangan</div>
+      
+      <button class="btn-accent" onclick="signPetition()">Tanda Tangan</button>
+      
+      <div class="next-step">
+        <strong>Langkah Selanjutnya:</strong> Kirim ke media lokal dan Kemenaker.
+      </div>
+    </div>
+
+    <div class="tagline">
+      Kamu ga aneh.<br>
+      Sistemnya yang broken!<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    function goTo(page) { window.location.href = page; }
+    function signPetition() {
+      alert('Terima kasih! Namamu telah ditambahkan.');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — Hangouts</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hangout-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .hangout-title {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .hangout-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      width: 100%;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    .review {
+      background: rgba(73,3,252,0.1);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 16px 20px;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .tagline strong {
+      color: var(--accent);
+      display: block;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('glitch.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span onclick="goTo('saynope.html')">SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <!-- Hangout Aktif -->
+    <div class="hangout-card">
+      <div class="hangout-title">Kedai Sunyi, Surabaya</div>
+      <div class="hangout-meta">4 Nopers • 15 Juni 2025 • 19.00 WIB</div>
+      <p>Ngobrol santai tentang “Kelelahan Digital” di tengah kota yang tak pernah tidur.</p>
+      <button class="btn-accent" onclick="alert('Form pendaftaran dibuka 1 Juni. Dipilih acak oleh sistem.')">
+        Daftar (Buka 1 Juni)
+      </button>
+    </div>
+
+    <!-- Review Terpilih -->
+    <div class="hangout-card">
+      <div class="hangout-title">Review Terpilih: Kedai Buku Matahari</div>
+      <div class="hangout-meta">April 2025 • 6 Nopers</div>
+      <p>Ngobrol tentang buku yang jadi teman di malam-malam sulit.</p>
+      <div class="review">
+        “@zahra: Aku nemu ‘Madilog’ di rak paling ujung. Rasanya kayak nemu senjata rahasia.”
+      </div>
+    </div>
+
+    <div class="tagline">
+      Kami mengarsip yang tak minta diingat —<br>
+      tapi layak dikenang.<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    function goTo(page) { window.location.href = page; }
+  </script>
+</body>
+</html>

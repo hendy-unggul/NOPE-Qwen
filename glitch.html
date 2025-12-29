@@ -74,7 +74,6 @@
 
     <div class="greeting">Hello @<span id="username-display"></span></div>
 
-    <!-- Card 1: Cultural Picks -->
     <div class="card" onclick="goToPage('glitch-picks.html')">
       <h3><span class="card-icon">🎧</span> Cultural Picks</h3>
       <p>Rekomendasi bulanan: musik, buku, film, podcast — dipilih oleh yang sefrekuensi.</p>
@@ -84,7 +83,6 @@
       </div>
     </div>
 
-    <!-- Card 2: Hangouts -->
     <div class="card" onclick="goToPage('glitch-hangouts.html')">
       <h3><span class="card-icon">☕</span> Hangouts</h3>
       <p>Cafe, pameran, atau acara intim yang mengundang Nopers. Daftar & terpilih acak.</p>
@@ -94,7 +92,6 @@
       </div>
     </div>
 
-    <!-- Card 3: Wawancara Tokoh -->
     <div class="card" onclick="goToPage('glitch-wawancara.html')">
       <h3><span class="card-icon">🎙️</span> Wawancara Tokoh</h3>
       <p>Obrolan jujur dengan seniman, aktivis, atau pekerja budaya yang relevan.</p>
@@ -112,9 +109,12 @@
   </div>
 
   <script>
+    // Hanya ambil username dari localStorage — tidak ada fetch
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
 
-    function goTo(page) { window.location.href = page; }
+    function goTo(page) {
+      window.location.href = page;
+    }
 
     function goToPage(page) {
       window.location.href = page;

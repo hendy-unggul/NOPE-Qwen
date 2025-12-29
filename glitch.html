@@ -3,43 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NOPE — GLITCH</title>
+  <title>NOPE — Cultural Picks</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .card {
+    .pick-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 20px;
+      padding: 24px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .pick-title {
+      font-size: 20px;
       margin-bottom: 16px;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
+      color: var(--text);
+      line-height: 1.3;
     }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .card p {
-      font-size: 13px;
-      color: var(--muted);
+    .quote {
+      background: rgba(73,3,252,0.15);
+      border-left: 3px solid var(--accent);
+      padding: 16px;
+      margin: 20px 0;
+      font-style: italic;
+      font-size: 15px;
       line-height: 1.5;
     }
-    .card-icon {
-      font-size: 18px;
-    }
-    .current-pick {
-      background: rgba(73,3,252,0.1);
-      border-radius: 12px;
-      padding: 12px;
-      margin-top: 12px;
-      font-size: 13px;
+    .signature {
+      margin-top: 20px;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 14px;
     }
     .tagline {
       text-align: center;
@@ -55,6 +49,11 @@
       display: block;
       margin-top: 4px;
     }
+    .meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
   </style>
 </head>
 <body>
@@ -62,43 +61,144 @@
     <header>
       <div class="logo">NOPE</div>
       <div class="top-right">
-        <button class="settings-btn" onclick="goTo('jejak.html')">⋯</button>
+        <button class="settings-btn" onclick="goTo('glitch.html')">⋯</button>
         <div class="nav-mini">
           <span onclick="goTo('jejak.html')">Jejak</span>
           <span onclick="goTo('frekuensi.html')">Frekuensi</span>
           <span onclick="goTo('saynope.html')">SayNOPE</span>
-          <span>GLITCH</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
         </div>
       </div>
     </header>
 
     <div class="greeting">Hello @<span id="username-display"></span></div>
 
-    <div class="card" onclick="goToPage('glitch-picks.html')">
-      <h3><span class="card-icon">🎧</span> Cultural Picks</h3>
-      <p>Rekomendasi bulanan: musik, buku, film, podcast — dipilih oleh yang sefrekuensi.</p>
-      <div class="current-pick">
-        <strong>Bulan Ini: Buku</strong><br>
-        “Madilog: senjata untuk berani berpikir di zaman yang takut berpikir.”
-      </div>
+    <!-- Artikel 1: Film -->
+    <div class="pick-card">
+      <div class="pick-title">Reza Rahadian dan Ilusi Kesempurnaan</div>
+      <div class="meta">Untuk yang lelah berakting jadi kuat</div>
+      
+      <p>“Kita memuji senyumnya — tapi lupa bertanya:<br>Di mana dia menangis?”</p>
+      
+      <p>Reza Rahadian bukan aktor. Ia <strong>cermin zaman yang takut retak</strong>.<br>
+      Setiap perannya — dari Soekarno sampai pengusaha muda —<br>
+      disajikan dengan <strong>senyum yang terlalu sempurna</strong>,<br>
+      seperti kopi instan:<br>
+      <em>Hangat, tapi tak pernah benar-benar membakar tenggorokan.</em></p>
+      
+      <p>Padahal, <strong>akting yang hidup lahir dari kegagalan</strong> —<br>
+      bukan dari skenario yang rapi.<br>
+      Lihat <strong>Laura Basuki di “Istirahatlah Kata-Kata”</strong>:<br>
+      Matanya bergetar sebelum bicara.<br>
+      Tubuhnya menciut di sudut ruang.<br>
+      Ia tidak <em>berakting sedih</em> — ia <strong>menjadi sedih</strong>.</p>
+      
+      <p>Reza? Ia <strong>berakting jadi manusia</strong>,<br>
+      tapi lupa jadi manusia yang rapuh.</p>
+      
+      <blockquote>
+        Ini bukan kritik pada Reza —<br>
+        ini teriakan untuk diri kita sendiri:<br>
+        Kapan terakhir kali kita berani tampil rapuh?
+      </blockquote>
+      
+      <p>Kalau kamu pernah pura-pura baik di depan keluarga,<br>
+      sambil nahan nangis di kamar mandi,<br>
+      maka kamu tahu:<br>
+      <strong>Kesempurnaan itu bukan kekuatan — itu penjara.</strong></p>
+      
+      <p>Dan mungkin,<br>
+      Reza juga butuh izin untuk<br>
+      <strong>tidak sempurna.</strong></p>
+      
+      <div class="signature">— @HD, 1% petani 99% failure...</div>
     </div>
 
-    <div class="card" onclick="goToPage('glitch-hangouts.html')">
-      <h3><span class="card-icon">☕</span> Hangouts</h3>
-      <p>Cafe, pameran, atau acara intim yang mengundang Nopers. Daftar & terpilih acak.</p>
-      <div class="current-pick">
-        <strong>Next: Kedai Sunyi, Surabaya</strong><br>
-        4 Nopers akan ngobrol santai tentang “Kelelahan Digital”.
-      </div>
+    <!-- Artikel 2: Musik -->
+    <div class="pick-card">
+      <div class="pick-title">Hindia: Lagu untuk yang Lelah Menunggu</div>
+      <div class="meta">Untuk yang janji “nanti” tapi hidupnya mandek</div>
+      
+      <p>“Kita terlalu sibuk mengejar ‘besok’<br>
+      sampai lupa hidup hari ini.”</p>
+      
+      <p>“Besok, Lusa, Nanti” bukan lagu.<br>
+      Ia <strong>terapi kolektif untuk generasi yang hidup di masa depan</strong>.</p>
+      
+      <p>Setiap baitnya menusuk:<br>
+      <em>“Kita janji bertemu di masa depan,<br>
+      Tapi masa depan tak pernah datang.”</em></p>
+      
+      <p>Di tengah lagu-lagu yang menyanyikan:<br>
+      <em>“Nanti kita sukses!”<br>
+      “Besok semua akan indah!”</em><br>
+      Hindia berani bilang:<br>
+      <strong>“Aku capek menunggu.”</strong></p>
+      
+      <p><strong>Musiknya</strong>?<br>
+      - Hanya piano dan vokal yang retak<br>
+      - Tidak ada synth mahal, tidak ada beat viral<br>
+      - Hanya <strong>detak jantung yang lelah</strong></p>
+      
+      <blockquote>
+        Ini lagu untuk yang pernah bilang:<br>
+        “Gue nungguin dia berubah.”<br>
+        Tapi yang berubah justru gue — jadi lebih kosong.
+      </blockquote>
+      
+      <p>Kalau kamu pernah menunda hidupmu dengan alasan:<br>
+      <em>“Nanti kalau punya duit…”<br>
+      “Nanti kalau udah lulus…”</em><br>
+      Maka dengarkan ini:<br>
+      <strong>Masa depan tidak akan pernah datang.<br>
+      Yang ada hanya hari ini —<br>
+      dan kamu sedang melewatinya sambil menunggu.</strong></p>
+      
+      <div class="signature">— @HD, 1% petani 99% failure...</div>
     </div>
 
-    <div class="card" onclick="goToPage('glitch-wawancara.html')">
-      <h3><span class="card-icon">🎙️</span> Wawancara Tokoh</h3>
-      <p>Obrolan jujur dengan seniman, aktivis, atau pekerja budaya yang relevan.</p>
-      <div class="current-pick">
-        <strong>Bulan Depan: Riri Riza</strong><br>
-        “Tentang film yang lahir dari kejujuran, bukan algoritma.”
-      </div>
+    <!-- Artikel 3: Buku -->
+    <div class="pick-card">
+      <div class="pick-title">Madilog: Senjata untuk yang Takut Berpikir</div>
+      <div class="meta">Untuk yang lelah dikasih tahu “ikut aja”</div>
+      
+      <p>“Di era algoritma,<br>
+      berani berpikir sendiri adalah bentuk perlawanan.”</p>
+      
+      <p>Tan Malaka tidak menulis buku.<br>
+      Ia menulis <strong>panggilan untuk berani sendiri</strong>.</p>
+      
+      <p><strong>Madilog</strong> (Materialisme, Dialektika, Logika)<br>
+      bukan teori — tapi <strong>alat untuk menghancurkan kebohongan</strong>.</p>
+      
+      <p>Yang mengejutkan?<br>
+      Ia menulis ini di <strong>penjara kolonial</strong>,<br>
+      tempat paling tidak bebas,<br>
+      tapi justru menghasilkan <strong>pikiran paling bebas</strong>.</p>
+      
+      <p>Sementara kita?<br>
+      Diberi kebebasan,<br>
+      tapi takut berpikir,<br>
+      karena takut salah.</p>
+      
+      <blockquote>
+        “Seorang pejuang harus berani sendiri.<br>
+        Karena kebenaran seringkali lahir di tempat yang sepi.”
+      </blockquote>
+      
+      <p>Kalimat ini bukan puisi.<br>
+      Ini <strong>tantangan</strong>:<br>
+      Apakah kamu berani mempertanyakan apa yang dikasih orang?</p>
+      
+      <p>Kalau kamu pernah ngerasa:<br>
+      <em>“Kenapa gue harus nurut tanpa boleh nanya?”</em><br>
+      Maka Madilog bukan bacaan —<br>
+      ia <strong>senjata</strong>.</p>
+      
+      <p>Dan Tan Malaka bukan penulis —<br>
+      ia <strong>pelatih berpikir</strong>.</p>
+      
+      <div class="signature">— @HD, 1% petani 99% failure...</div>
     </div>
 
     <div class="tagline">
@@ -109,16 +209,9 @@
   </div>
 
   <script>
-    // Hanya ambil username dari localStorage — tidak ada fetch
     document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
-
-    function goTo(page) {
-      window.location.href = page;
-    }
-
-    function goToPage(page) {
-      window.location.href = page;
-    }
+    function goTo(page) { window.location.href = page; }
   </script>
 </body>
 </html>
+

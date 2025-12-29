@@ -33,7 +33,6 @@
       max-width: 320px;
       width: 100%;
     }
-    /* Logo kecil, rendah intensitas */
     .logo {
       font-family: system-ui, sans-serif;
       font-size: 18px;
@@ -43,7 +42,6 @@
       opacity: 0.7;
       margin-bottom: 32px;
     }
-    /* Input jadi pusat perhatian */
     .input-group {
       margin-bottom: 24px;
     }
@@ -61,7 +59,6 @@
       color: var(--muted);
       font-weight: 400;
     }
-    /* Teks penyambut: kecil, miring, di bawah input */
     .welcome {
       font-size: 13px;
       color: var(--muted);
@@ -69,7 +66,6 @@
       margin-top: 8px;
       line-height: 1.4;
     }
-    /* Tombol: netral, tapi hangat saat hover */
     .btn {
       width: 100%;
       padding: 14px;
@@ -87,33 +83,24 @@
       color: #000;
       border-color: var(--accent);
     }
-    .example {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 6px;
-    }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <!-- Logo kecil, tidak mendominasi -->
     <div class="logo">NOPE</div>
     
-    <!-- Input jadi fokus utama -->
     <div class="input-group">
       <input 
         id="username" 
         type="text" 
-        placeholder="dua kata yang mewakilimu…" 
+        placeholder="nama" 
         maxlength="30"
       >
       <div class="welcome">
         Masukkan namamu — bukan untuk login, tapi untuk pulang.
       </div>
-      <div class="example">contoh: Kill Bill</div>
     </div>
     
-    <!-- Tombol netral, aktif hanya saat hover -->
     <button class="btn" onclick="login()">Aku pulang</button>
   </div>
 
@@ -125,7 +112,7 @@
         return;
       }
       if (u.split(' ').length !== 2) {
-        alert('Butuh dua kata, seperti: "nadi ganteng"');
+        alert('Butuh dua kata, seperti: "kill bill"');
         return;
       }
       localStorage.setItem('nope_username', u);

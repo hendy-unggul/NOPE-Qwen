@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOPE — SayNOPE</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .card-icon {
+      font-size: 18px;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 16px 20px;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .tagline strong {
+      color: var(--accent);
+      display: block;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo">NOPE</div>
+      <div class="top-right">
+        <button class="settings-btn" onclick="goTo('jejak.html')">⋯</button>
+        <div class="nav-mini">
+          <span onclick="goTo('jejak.html')">Jejak</span>
+          <span onclick="goTo('frekuensi.html')">Frekuensi</span>
+          <span>SayNOPE</span>
+          <span onclick="goTo('glitch.html')">GLITCH</span>
+        </div>
+      </div>
+    </header>
 
+    <div class="greeting">Hello @<span id="username-display"></span></div>
+
+    <div class="card" onclick="goToPage('saynope-thread.html')">
+      <h3><span class="card-icon">💬</span> Rant Thread</h3>
+      <p>Buat diskusi terbuka dengan 1 tag (#skripsi, #toxicboss). Semua bisa komentar & kirim 🔥, 🫂, ✊.</p>
+    </div>
+
+    <div class="card" onclick="goToPage('saynope-petisi.html')">
+      <h3><span class="card-icon">✊</span> Petisi</h3>
+      <p>Mulai atau dukung gerakan nyata. Tanda tangan digital, sebar ke yang sefrekuensi.</p>
+    </div>
+
+    <div class="card" onclick="goToPage('saynope-solidaritas.html')">
+      <h3><span class="card-icon">🤝</span> Solidaritas</h3>
+      <p>Kirim dukungan moral atau materi untuk sesama yang sedang berjuang.</p>
+    </div>
+
+    <div class="card" onclick="goToPage('saynope-zine.html')">
+      <h3><span class="card-icon">📓</span> Zine & Arsip</h3>
+      <p>Kontribusi tulisan, artefak, atau ide untuk arsip budaya generasi.</p>
+    </div>
+
+    <div class="tagline">
+      Kamu ga aneh.<br>
+      Sistemnya yang broken!<br>
+      <strong>— Glitch Generation</strong>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+
+    function goTo(page) { window.location.href = page; }
+
+    function goToPage(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

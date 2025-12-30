@@ -7,7 +7,13 @@
   --accent: #4903fc;
   --logo-color: #ff9999;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: radial-gradient(ellipse at top, #0a0a0a, #000);
   color: var(--text);
@@ -17,11 +23,14 @@ body {
   padding-bottom: 72px;
   -webkit-font-smoothing: antialiased;
 }
+
 .wrapper {
   max-width: 480px;
   margin: 0 auto;
   padding: 0 16px;
 }
+
+/* === Header & Nav === */
 header {
   position: sticky;
   top: 0;
@@ -33,6 +42,7 @@ header {
   align-items: center;
   z-index: 10;
 }
+
 .logo {
   font-family: 'Manrope', sans-serif;
   font-size: 24px;
@@ -40,12 +50,14 @@ header {
   letter-spacing: -0.02em;
   color: var(--logo-color);
 }
+
 .top-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 4px;
 }
+
 .settings-btn {
   background: none;
   border: none;
@@ -53,22 +65,26 @@ header {
   font-size: 20px;
   cursor: pointer;
 }
+
 .nav-mini {
   display: flex;
   gap: 8px;
   font-size: 11px;
   color: var(--muted);
 }
+
 .nav-mini span {
   cursor: pointer;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 3px;
 }
+
 .nav-mini span:hover {
   color: var(--text);
 }
 
+/* === Greeting === */
 .greeting {
   text-align: center;
   font-size: 13px;
@@ -76,29 +92,31 @@ header {
   margin: 16px 0 12px;
 }
 
+/* === Hero Artefak === */
 .hero {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5; /* Potrait 4:5 — non-wajah */
+  aspect-ratio: 4 / 5; /* Potrait non-wajah */
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 0 0 24px 24px;
   overflow: hidden;
   margin-bottom: 16px;
 }
+
 .hero img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* Notasi dalam foto, kiri atas */
+
 .artefak-notation {
   position: absolute;
   top: 8px;
   left: 8px;
   background: rgba(0,0,0,0.3);
   color: var(--text);
-  font-size: 11px; /* 80% dari body (14px) */
+  font-size: 11px; /* ~80% dari body */
   font-weight: 600;
   padding: 4px 6px;
   border-radius: 4px;
@@ -107,6 +125,7 @@ header {
   backdrop-filter: blur(2px);
   pointer-events: none;
 }
+
 .hero-input {
   position: absolute;
   bottom: 12px;
@@ -116,6 +135,7 @@ header {
   align-items: center;
   gap: 8px;
 }
+
 .hero-input input {
   flex: 1;
   background: #000000aa;
@@ -125,10 +145,12 @@ header {
   color: var(--text);
   font-size: 13px;
 }
+
 .hero-input input:focus {
   outline: none;
   border-color: var(--accent);
 }
+
 .hero-input button {
   background: var(--accent);
   color: #000;
@@ -140,6 +162,7 @@ header {
   cursor: pointer;
 }
 
+/* === Rant Box === */
 .rant-box {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -148,6 +171,7 @@ header {
   margin-bottom: 16px;
   position: relative;
 }
+
 .rant-box textarea {
   width: 100%;
   background: transparent;
@@ -159,9 +183,11 @@ header {
   resize: none;
   min-height: 100px;
 }
+
 .rant-box textarea:focus {
   outline: none;
 }
+
 .rant-cta {
   position: absolute;
   bottom: 12px;
@@ -175,6 +201,7 @@ header {
   font-weight: 600;
   cursor: pointer;
 }
+
 .confirmation {
   font-size: 11px;
   color: var(--muted);
@@ -182,6 +209,7 @@ header {
   margin-top: 4px;
 }
 
+/* === Diary (Rant Kronologis) === */
 .diary {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -189,11 +217,16 @@ header {
   padding: 14px;
   margin-bottom: 16px;
 }
+
 .diary-entry {
   padding: 10px 0;
   border-bottom: 1px solid var(--border);
 }
-.diary-entry:last-child { border: none; }
+
+.diary-entry:last-child {
+  border: none;
+}
+
 .diary-entry time {
   font-size: 10px;
   color: var(--muted);
@@ -201,46 +234,7 @@ header {
   margin-bottom: 2px;
 }
 
-.zones {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-.zone-item {
-  display: flex;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-.zone-item:last-child { border: none; }
-.zone-icon { font-size: 18px; }
-.zone-content h3 { font-size: 14px; margin-bottom: 4px; }
-.zone-content p { font-size: 13px; color: var(--muted); }
-.zone-actions {
-  margin-top: 8px;
-  display: flex;
-  gap: 12px;
-}
-.zone-btn {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.zone-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* Tray: 3 kolom x 2 baris */
+/* === Tray Artefak (3x2) === */
 .tray {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -248,8 +242,9 @@ header {
   gap: 8px;
   padding: 0 16px 16px;
 }
+
 .tray-slot {
-  aspect-ratio: 1; /* Square for tray */
+  aspect-ratio: 1; /* Square */
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -257,6 +252,7 @@ header {
   background-position: center;
   position: relative;
 }
+
 .tray-slot .artefak-notation {
   top: 6px;
   left: 6px;
@@ -264,6 +260,7 @@ header {
   padding: 3px 5px;
 }
 
+/* === Tagline Akhir === */
 .tagline {
   text-align: center;
   font-size: 12px;
@@ -273,8 +270,16 @@ header {
   max-width: 320px;
   margin: 0 auto;
 }
+
 .tagline strong {
   color: var(--accent);
   display: block;
   margin-top: 4px;
+}
+
+/* === Responsif Tambahan === */
+@media (max-width: 320px) {
+  .wrapper { padding: 0 12px; }
+  .hero-input { bottom: 10px; left: 10px; right: 10px; }
+  .rant-box { padding: 12px 14px 22px 14px; }
 }

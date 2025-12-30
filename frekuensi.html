@@ -4,12 +4,104 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NOPE — Frekuensi</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
+    :root {
+      --bg: #000;
+      --surface: #0a0a0a;
+      --border: #1f1f1f;
+      --text: #f5f5f5;
+      --muted: #555;
+      --accent: #4903fc;
+      --logo-color: #ff9999;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(ellipse at top, #0a0a0a, #000);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      padding-bottom: 72px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #000000cc;
+      backdrop-filter: blur(6px);
+      padding: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    .logo {
+      font-family: 'Manrope', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--logo-color);
+      margin-left: 16px;
+    }
+    .top-right {
+      display: flex;
+      align-items: center;
+      margin-right: 12px;
+    }
+    .nav-mini {
+      display: flex;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-right: 8px;
+    }
+    .nav-mini span {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+    }
+    .nav-mini span:hover {
+      color: var(--text);
+    }
+    .settings-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      transform: rotate(90deg);
+    }
+    .greeting {
+      font-size: 16px;
+      margin: 20px 0 24px 0;
+      color: var(--text);
+    }
+    .zones {
+      margin-bottom: 32px;
+    }
+    .zone-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
     .zone-post-container {
       margin: 10px 0;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
+    }
+    .zone-post-container:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
     .zone-post {
       font-size: 13px;
@@ -38,9 +130,12 @@
     }
     .zone-icon {
       font-size: 18px;
+      margin-bottom: 8px;
     }
     .zone-title {
       margin-bottom: 4px;
+      font-size: 16px;
+      font-weight: 600;
     }
     .zone-description {
       color: var(--muted);
@@ -52,6 +147,26 @@
       background: var(--border);
       margin: 0 0 12px 0;
     }
+    .tagline {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 16px 20px;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .tagline strong {
+      color: var(--accent);
+      display: block;
+      margin-top: 4px;
+    }
+    .empty-zone {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 12px 0;
+    }
   </style>
 </head>
 <body>
@@ -59,13 +174,13 @@
     <header>
       <div class="logo">NOPE</div>
       <div class="top-right">
-        <button class="settings-btn" onclick="goTo('jejak.html')">⋯</button>
         <div class="nav-mini">
-          <span onclick="goTo('jejak.html')">Jejak</span>
-          <span>Frekuensi</span>
-          <span onclick="goTo('saynope.html')">SayNOPE</span>
-          <span onclick="goTo('glitch.html')">GLITCH</span>
+          <span id="nav-jejak">Jejak</span>
+          <span id="nav-frekuensi">Frekuensi</span>
+          <span id="nav-saynope">SayNOPE</span>
+          <span id="nav-glitch">GLITCH</span>
         </div>
+        <button class="settings-btn" id="settings-btn">⋯</button>
       </div>
     </header>
 
@@ -73,98 +188,35 @@
 
     <!-- Hype Haus -->
     <div class="zones">
-      <div class="zone-item">
+      <div class="zone-item" id="zone-hype">
         <div class="zone-icon">🎧</div>
         <div class="zone-content">
           <h3 class="zone-title">Hype Haus</h3>
           <p class="zone-description">“Tempat nge-hype idol, drakor, atau AU tanpa takut di-spill.”</p>
           <div class="zone-divider"></div>
-          
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@dila</span>
-              <span class="post-emoji">🔥</span>
-            </div>
-            <div class="post-content">V!!!!!</div>
-          </div>
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@nadi</span>
-              <span class="post-emoji">🔥</span>
-            </div>
-            <div class="post-content">endingnya bikin aku nangis 2 jam</div>
-          </div>
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@indra</span>
-              <span class="post-emoji">🔥</span>
-            </div>
-            <div class="post-content">OP BANGET</div>
-          </div>
+          <!-- Posts will be injected here -->
         </div>
       </div>
 
       <!-- Ngusahain -->
-      <div class="zone-item">
+      <div class="zone-item" id="zone-ngusahain">
         <div class="zone-icon">💼</div>
         <div class="zone-content">
           <h3 class="zone-title">Ngusahain</h3>
           <p class="zone-description">“Cerita progress lo: dari skripsi sampe jualan thrifting.”</p>
           <div class="zone-divider"></div>
-          
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@raka</span>
-              <span class="post-emoji">+1</span>
-            </div>
-            <div class="post-content">hari ke-47. belum kelar.</div>
-          </div>
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@fiki</span>
-              <span class="post-emoji">+1</span>
-            </div>
-            <div class="post-content">jualan laku 3. untung 50rb.</div>
-          </div>
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@zahra</span>
-              <span class="post-emoji">+1</span>
-            </div>
-            <div class="post-content">gambar masih jelek. tapi latihan.</div>
-          </div>
+          <!-- Posts will be injected here -->
         </div>
       </div>
 
       <!-- Spill Zone -->
-      <div class="zone-item">
+      <div class="zone-item" id="zone-spill">
         <div class="zone-icon">💬</div>
         <div class="zone-content">
           <h3 class="zone-title">Spill Zone</h3>
           <p class="zone-description">“Curhat, ngeluh, atau cuma pengin ngomong — no cap, no jaim.”</p>
           <div class="zone-divider"></div>
-          
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@zahra</span>
-              <span class="post-emoji">🫂</span>
-            </div>
-            <div class="post-content">capek jadi kuat.</div>
-          </div>
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@raka</span>
-              <span class="post-emoji">🫂</span>
-            </div>
-            <div class="post-content">skripsi mentok. ngerasa bodoh.</div>
-          </div>
-          <div class="zone-post-container">
-            <div class="post-header">
-              <span class="post-username">@lala</span>
-              <span class="post-emoji">🫂</span>
-            </div>
-            <div class="post-content">sendiri. hujan. berat.</div>
-          </div>
+          <!-- Posts will be injected here -->
         </div>
       </div>
     </div>
@@ -176,12 +228,112 @@
     </div>
   </div>
 
-  <script>
-    document.getElementById('username-display').textContent = localStorage.getItem('nope_username') || 'kawan';
+  <script type="module">
+    // === SUPABASE ===
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-    function goTo(page) {
+    // 🔑 GANTI DENGAN PROJECT-MU
+    const supabaseUrl = 'https://your-project.supabase.co';
+    const supabaseAnonKey = 'your-anon-key-here';
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+    // === STATE ===
+    const currentUser = localStorage.getItem('nope_username');
+    if (!currentUser) {
+      window.location.href = 'index.html';
+    }
+    document.getElementById('username-display').textContent = currentUser;
+
+    // Mapping zona untuk emoji & query
+    const ZONES = {
+      hype: { id: 'zone-hype', emoji: '🔥' },
+      ngusahain: { id: 'zone-ngusahain', emoji: '+1' },
+      spill: { id: 'zone-spill', emoji: '🫂' }
+    };
+
+    // === LOAD FEED ===
+    async function loadFeed() {
+      try {
+        // Ambil 5 rant terbaru per zona
+        for (const [zoneKey, config] of Object.entries(ZONES)) {
+          const { data, error } = await supabase
+            .from('rants')
+            .select('*')
+            .eq('zone', zoneKey)
+            .order('created_at', { ascending: false })
+            .limit(5);
+
+          if (error) {
+            console.error(`Gagal muat zona ${zoneKey}:`, error);
+            renderZonePosts(zoneKey, []);
+            continue;
+          }
+
+          renderZonePosts(zoneKey, data || []);
+        }
+      } catch (e) {
+        console.error('Error saat load feed:', e);
+      }
+    }
+
+    // === RENDER POST PER ZONA ===
+    function renderZonePosts(zoneKey, posts) {
+      const container = document.getElementById(ZONES[zoneKey].id).querySelector('.zone-content');
+      // Cari elemen setelah zone-divider
+      const divider = container.querySelector('.zone-divider');
+      if (!divider) return;
+
+      // Kosongkan konten setelah divider
+      while (divider.nextSibling) {
+        divider.parentNode.removeChild(divider.nextSibling);
+      }
+
+      if (posts.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'empty-zone';
+        empty.textContent = 'Belum ada jejak di zona ini.';
+        container.appendChild(empty);
+        return;
+      }
+
+      posts.forEach(post => {
+        const postEl = document.createElement('div');
+        postEl.className = 'zone-post-container';
+        postEl.innerHTML = `
+          <div class="post-header">
+            <span class="post-username">@${post.username}</span>
+            <span class="post-emoji">${ZONES[zoneKey].emoji}</span>
+          </div>
+          <div class="post-content">${post.content}</div>
+        `;
+        container.appendChild(postEl);
+      });
+    }
+
+    // === NAVIGASI ===
+    function navigateTo(page) {
       window.location.href = page;
     }
+
+    function logout() {
+      if (confirm('Keluar dari akun?')) {
+        localStorage.removeItem('nope_username');
+        window.location.href = 'index.html';
+      }
+    }
+
+    // === INIT ===
+    document.addEventListener('DOMContentLoaded', () => {
+      // Navigasi
+      document.getElementById('nav-jejak').addEventListener('click', () => navigateTo('jejak.html'));
+      document.getElementById('nav-frekuensi').addEventListener('click', () => navigateTo('frekuensi.html'));
+      document.getElementById('nav-saynope').addEventListener('click', () => navigateTo('saynope.html'));
+      document.getElementById('nav-glitch').addEventListener('click', () => navigateTo('glitch.html'));
+      document.getElementById('settings-btn').addEventListener('click', logout);
+
+      // Load feed
+      loadFeed();
+    });
   </script>
 </body>
 </html>
